@@ -4,9 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Hero } from '../models/hero';
-import { Heroes } from '../mock-heroes';
 import { MessageService } from './message.service';
-import { timingSafeEqual } from 'crypto';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
