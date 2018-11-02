@@ -24,10 +24,6 @@ export class HeroService {
     private messageService: MessageService
   ) { }
 
-  private log(message: string): void {
-    this.messageService.add(`HeroService: ${message}`);
-  }
-
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
@@ -81,6 +77,10 @@ export class HeroService {
         tap(_ => this.log(`found heroes matching "${term}"`)),
         catchError(this.handleError<Hero[]>('searchHeroes', []))
       );
+  }
+
+  private log(message: string): void {
+    this.messageService.add(`HeroService: ${message}`);
   }
 
   private handleError<T> (operation:string = 'operation', result?: T) {
